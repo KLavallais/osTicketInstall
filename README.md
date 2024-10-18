@@ -1,8 +1,7 @@
 # **Installing osTicket on a Virtual Machine (Microsoft Azure)**
 
-[![Watch the Full Video](https://github.com/KLavallais/KLavallais/blob/assets/YourThumbnailImage.png)](https://www.youtube.com/watch?v=5FxwlTwsrdk)
+[![Watch the Full Video](https://github.com/KLavallais/KLavallais/blob/assets/osTicket%20Installation%20Thumbnail.png)](https://www.youtube.com/watch?v=5FxwlTwsrdk)
 
-[Watch the Full Video Here](https://www.youtube.com/watch?v=5FxwlTwsrdk)
 
 ## **Summary:**
 In this video, I walk you through the installation of osTicket on a virtual machine that I have set up in **Microsoft Azure**. The process includes configuring the web server (IIS), setting up PHP, and installing MySQL. I provide step-by-step guidance while removing unnecessary parts to keep things as concise as possible.
