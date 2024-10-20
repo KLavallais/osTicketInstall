@@ -26,22 +26,31 @@ This guide highlights the foundational steps to get osTicket running. A follow-u
 - Using command-line tools and graphical interfaces to manage software.
 
 ## **General Steps in the Video:**
+
 1. **Starting the Virtual Machine on Microsoft Azure**
    - Explanation of the VM setup process.
+
 2. **Downloading osTicket Installation Files**
-   - Downloading osTicket files on the virtual machine to expedite the process.
+   - [Download osTicket installation files](https://drive.usercontent.google.com/download?id=1b3RBkXTLNGXbibeMuAynkfzdBC1NnqaD&export=download&authuser=0) on the virtual machine to initiate the process.
+
 3. **Setting Up Internet Information Services (IIS)**
    - Configuring IIS for osTicket.
+
 4. **Installing PHP Manager for IIS**
    - Adding PHP Manager to IIS to manage PHP installations.
+
 5. **Installing MySQL Server**
    - Configuring the MySQL server with a simple root password for demonstration purposes.
+
 6. **Configuring osTicket Installation**
    - Moving and renaming files and setting permissions.
+
 7. **Creating and Setting Up the osTicket Database**
    - Using HeidiSQL to create a database for osTicket.
+
 8. **Completing the osTicket Installation**
    - Final steps for configuring osTicket, including setting file permissions and testing the installation.
+
 
 ## **Post-Installation Repository:**
 Once osTicket is installed, there are several settings to be configured for optimal performance, including user roles, departments, teams, service level agreements (SLAs), and help topics. I have created a separate repository that will guide you through all the necessary **post-installation settings** to ensure osTicket works as expected for your specific use case.
