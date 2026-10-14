@@ -95,7 +95,7 @@ Use your own VM, MySQL, and osTicket credentials when following this walkthrough
 
 **Expected result:** All prerequisite installers and application files are available in one folder.
 
-![The extracted course bundle with the prerequisite installers](01-installation-files.png)
+![The extracted course bundle with the prerequisite installers](assets/01-installation-files.png)
 
 *Installation video, approximately 04:07: the extracted bundle used throughout the walkthrough.*
 
@@ -112,7 +112,7 @@ Use your own VM, MySQL, and osTicket credentials when following this walkthrough
 7. Select **OK** and allow Windows to install the features.
 8. Return to Edge and refresh `http://127.0.0.1`.
 
-![CGI selected under IIS Application Development Features in Windows Features](10-iis-cgi.png)
+![CGI selected under IIS Application Development Features in Windows Features](assets/10-iis-cgi.png)
 
 *Installation video, approximately 03:24: CGI is enabled under IIS Application Development Features.*
 
@@ -120,7 +120,7 @@ Use your own VM, MySQL, and osTicket credentials when following this walkthrough
 
 `127.0.0.1` is the loopback address: in the VM's browser, it points to the VM itself. This is an HTTP web-server check, distinct from using `ping` to test ICMP responses.
 
-![The IIS welcome page at the loopback address](02-iis-welcome.png)
+![The IIS welcome page at the loopback address](assets/02-iis-welcome.png)
 
 *Installation video, approximately 03:47: IIS responds successfully after its features are enabled.*
 
@@ -165,7 +165,7 @@ Use your own VM, MySQL, and osTicket credentials when following this walkthrough
 
 **Expected result:** MySQL is installed and its local service starts. HeidiSQL will verify the connection in step 13.
 
-![MySQL's configuration wizard with Standard Configuration selected](03-mysql-configuration.png)
+![MySQL's configuration wizard with Standard Configuration selected](assets/03-mysql-configuration.png)
 
 *Installation video, approximately 06:12: Standard Configuration is selected for the lab database server.*
 
@@ -183,7 +183,7 @@ Use your own VM, MySQL, and osTicket credentials when following this walkthrough
 
 **Expected result:** PHP Manager displays version **7.3.8** and executable **`C:\PHP\php-cgi.exe`**. IIS can now pass PHP requests to the registered runtime.
 
-![PHP Manager showing the registered PHP executable and version](04-php-registered.png)
+![PHP Manager showing the registered PHP executable and version](assets/04-php-registered.png)
 
 *Installation video, approximately 07:22: PHP is registered in IIS.*
 
@@ -201,7 +201,7 @@ Use your own VM, MySQL, and osTicket credentials when following this walkthrough
 
 **Expected result:** The application resides at `C:\inetpub\wwwroot\osTicket` and its local URL is `http://localhost/osTicket/`.
 
-![The osTicket application folder in the IIS web directory C:\inetpub\wwwroot](11-osticket-web-directory.png)
+![The osTicket application folder in the IIS web directory C:\inetpub\wwwroot](assets/11-osticket-web-directory.png)
 
 *Installation video, approximately 09:11: the osTicket folder is in the IIS web directory.*
 
@@ -221,7 +221,7 @@ Use your own VM, MySQL, and osTicket credentials when following this walkthrough
 
 **OPcache observation:** The video also selects `php_opcache.dll`, but the refreshed installer still marks **Zend OPcache Extension** with a red X. This walkthrough therefore does not claim that OPcache was successfully activated. The installer identifies it as a recommended performance extension, and installation succeeds with it unavailable in this lab.
 
-![osTicket prerequisite checks after enabling IMAP and Intl](05-prerequisites.png)
+![osTicket prerequisite checks after enabling IMAP and Intl](assets/05-prerequisites.png)
 
 *Installation video, approximately 11:04: required checks pass; the optional APCu and Zend OPcache checks remain red.*
 
@@ -237,7 +237,7 @@ Use your own VM, MySQL, and osTicket credentials when following this walkthrough
 
 **Expected result:** `C:\inetpub\wwwroot\osTicket\include\ost-config.php` exists. The installer will write its database and application configuration into this file.
 
-![The renamed ost-config.php file in the application's include folder](06-configuration-file.png)
+![The renamed ost-config.php file in the application's include folder](assets/06-configuration-file.png)
 
 *Installation video, approximately 11:34: the configuration file has been renamed.*
 
@@ -256,7 +256,7 @@ Use your own VM, MySQL, and osTicket credentials when following this walkthrough
 
 This temporary permission applies to this single configuration file. Complete step 15 after installation to remove the broad write access.
 
-![The temporary Everyone permission entry used during installation](07-temporary-permissions.png)
+![The temporary Everyone permission entry used during installation](assets/07-temporary-permissions.png)
 
 *Installation video, approximately 12:15: the lab grants temporary full control for the configuration file.*
 
@@ -298,7 +298,7 @@ This temporary permission applies to this single configuration file. Complete st
 
 **Expected result:** HeidiSQL connects successfully and the `osTicket` database exists. The installer will create the application's tables inside it.
 
-![The osTicket database being created in HeidiSQL](08-database-created.png)
+![The osTicket database being created in HeidiSQL](assets/08-database-created.png)
 
 *Installation video, approximately 14:30: the database is named osTicket.*
 
@@ -317,14 +317,14 @@ This temporary permission applies to this single configuration file. Complete st
    | MySQL Username | `root`, the default MySQL administrator account |
    | MySQL Password | The MySQL password you created in step 6 |
 
-   ![The osTicket installer database settings with database osTicket, hostname localhost, username root, and a masked password](12-database-settings.png)
+   ![The osTicket installer database settings with database osTicket, hostname localhost, username root, and a masked password](assets/12-database-settings.png)
 
    *Installation video, approximately 14:48: the installer is configured to use the osTicket database; the password is masked.*
 
 3. Select **Install Now** and wait for the installation to finish.
 4. Confirm that the installer displays **Congratulations!** and reports that installation completed successfully.
 
-![The successful osTicket installation screen](09-installation-success.png)
+![The successful osTicket installation screen](assets/09-installation-success.png)
 
 *Installation video, approximately 15:17: the installer reports success and prompts for cleanup.*
 
@@ -418,3 +418,4 @@ The [osTicket post-installation configuration guide](https://github.com/KLavalla
 - [osTicket 1.15.8 post-installation guide](https://docs.osticket.com/en/v1.15.8/Getting%20Started/Post-Installation.html)
 
 All 12 installation screenshots are frames from my installation walkthrough, cropped to the relevant application windows. Arrows, circles, and the temporary-permission label highlight key settings. Captions identify the approximate video time and the state shown.
+
