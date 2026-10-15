@@ -16,7 +16,7 @@ The starting point is an existing Windows 10 computer with administrator access.
 
 ## Video walkthrough
 
-[![Watch the osTicket installation walkthrough](https://raw.githubusercontent.com/KLavallais/KLavallais/assets/osTicket%20Installation%20Thumbnail.png)](https://www.youtube.com/watch?v=5FxwlTwsrdk)
+[![Watch the osTicket installation walkthrough](https://raw.githubusercontent.com/KLavallais/KLavallais/refs/heads/assets/Installing%20osTicket%20On%20Windows%2010.png)](https://www.youtube.com/watch?v=5FxwlTwsrdk)
 
 **[Watch the full walkthrough on YouTube](https://www.youtube.com/watch?v=5FxwlTwsrdk)** — approximately 15 minutes. Sections 1–14 link to the corresponding part of the recording. Sections 15–16 provide follow-up cleanup and verification instructions.
 
