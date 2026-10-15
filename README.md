@@ -1,4 +1,4 @@
-# Installing osTicket on a Windows Virtual Machine in Microsoft Azure
+# Installing osTicket on Windows 10
 
 **Author:** Kris Lavallais  
 **Project type:** Application installation walkthrough  
@@ -6,9 +6,9 @@
 
 ## Project summary
 
-I installed osTicket, an open-source help desk ticketing application, on a Windows virtual machine hosted in Microsoft Azure. This walkthrough shows how I enabled Internet Information Services (IIS), configured PHP, installed MySQL, connected osTicket to its database, and completed the web-based installer.
+I installed osTicket, an open-source help desk ticketing application, on Windows 10. This walkthrough shows how I enabled Internet Information Services (IIS), configured PHP, installed MySQL, connected osTicket to its database, and completed the web-based installer. The demonstration computer was an existing Azure VM, as identified in the environment description above.
 
-The starting point is an existing Azure VM with administrator access. The installation video demonstrates the process through the successful installer screen. Screenshots from that recording document the installation steps. Administrator login, cleanup, and final verification are included as follow-up instructions after the recorded installation.
+The starting point is an existing Windows 10 computer with administrator access. The installation video demonstrates the process through the successful installer screen. Screenshots from that recording document the installation steps. Administrator login, cleanup, and final verification are included as follow-up instructions after the recorded installation.
 
 **Languages and scripting:** No custom scripts or application code were written for this project. PHP is the runtime used by osTicket, and MySQL stores its data.
 
@@ -18,15 +18,15 @@ The starting point is an existing Azure VM with administrator access. The instal
 
 [![Watch the osTicket installation walkthrough](https://raw.githubusercontent.com/KLavallais/KLavallais/assets/osTicket%20Installation%20Thumbnail.png)](https://www.youtube.com/watch?v=5FxwlTwsrdk)
 
-**[Watch the full walkthrough on YouTube](https://www.youtube.com/watch?v=5FxwlTwsrdk)** — approximately 15 minutes. Each installation section below links to the matching point in the video.
+**[Watch the full walkthrough on YouTube](https://www.youtube.com/watch?v=5FxwlTwsrdk)** — approximately 15 minutes. Sections 1–14 link to the corresponding part of the recording. Sections 15–16 provide follow-up cleanup and verification instructions.
 
 ## Environment and technologies
 
 | Technology | Purpose in this project |
 | --- | --- |
-| Microsoft Azure Virtual Machines | Hosts the Windows lab computer |
+| Microsoft Azure Virtual Machines | Hosts the Windows computer used in the recording |
 | Windows 10 | Operating system used in the recording |
-| Remote Desktop Connection | Provides access to the Azure VM |
+| Remote Desktop Connection | Provides access to the remote Windows computer in the recording |
 | IIS and its CGI feature | Serves the application and supports PHP through FastCGI |
 | PHP Manager for IIS | Registers PHP and manages its extensions |
 | IIS URL Rewrite Module | Supports the application's URL rewrite rules |
@@ -40,17 +40,19 @@ These are the versions used in the recorded course lab. Use the matching lab bun
 
 ## Before you begin
 
-- Have an existing Azure Windows VM, its current connection address, and its administrator credentials available.
-- Confirm that you can sign in through Remote Desktop. The VM's inbound rules must permit that connection from your client.
-- Perform the application installation steps **inside the VM**.
+This walkthrough begins with an existing Windows 10 computer and administrator access. Creating the computer or provisioning a virtual machine is outside this tutorial’s scope.
+
+- Have an existing Windows 10 computer and its administrator credentials available.
+- If using a remote lab computer, confirm that you can connect through Remote Desktop.
+- Perform the installation steps on that Windows computer.
 - Obtain the `osTicket-Installation-Files` ZIP supplied in your course's osTicket installation lesson. It contains the matching installers used in the video.
 - Keep the MySQL password and the separate osTicket administrator password available for their respective setup screens.
 
-Use your own VM, MySQL, and osTicket credentials when following this walkthrough. The recording temporarily grants `Everyone` full control of one configuration file for the course lab. The cleanup section explains how to remove that file's temporary write permissions. A real deployment should use strong credentials and a dedicated application database account.
+Use your own Windows, MySQL, and osTicket credentials when following this walkthrough. The recording temporarily grants `Everyone` full control of one configuration file for the course lab. The cleanup section explains how to remove that file's temporary write permissions. A real deployment should use strong credentials and a dedicated application database account.
 
 ## Contents
 
-1. [Start and access the Azure VM](#1-start-and-access-the-azure-vm)
+1. [Access the Windows lab computer](#1-access-the-windows-lab-computer)
 2. [Download and extract the installation bundle](#2-download-and-extract-the-installation-bundle)
 3. [Enable IIS and CGI](#3-enable-iis-and-cgi)
 4. [Install PHP Manager and URL Rewrite](#4-install-php-manager-and-url-rewrite)
@@ -69,24 +71,21 @@ Use your own VM, MySQL, and osTicket credentials when following this walkthrough
 
 ## Step-by-step installation
 
-### 1. Start and access the Azure VM
+### 1. Access the Windows lab computer
 
 **Video:** [00:00](https://www.youtube.com/watch?v=5FxwlTwsrdk&t=0s)
 
-1. Sign in to the Azure portal and open **Virtual machines**.
-2. Select the existing VM. In the recording, its name is `osTicket-vm`.
-3. If it is stopped, select **Start** and wait until its status is **Running**.
-4. Obtain its current public IP address from **Overview**.
-5. On your own computer, open **Remote Desktop Connection**, enter that address, and select **Connect**.
-6. Sign in with the administrator account created for your VM and accept the connection prompt for this lab VM if shown.
+1. For a local Windows 10 lab computer, sign in with its administrator account.
+2. For a remote Windows 10 lab computer, open **Remote Desktop Connection** on your own computer, enter the existing lab computer's connection address, select **Connect**, and sign in with its administrator account.
+3. Open Microsoft Edge and File Explorer on the Windows lab desktop. Complete the remaining installation steps on that computer.
 
-**Expected result:** The remote Windows desktop opens. Continue working inside that desktop so the application is installed on the Azure VM.
+**Expected result:** You are signed in to the Windows desktop with administrator access and ready to install the required software.
 
 ### 2. Download and extract the installation bundle
 
 **Video:** [01:07](https://www.youtube.com/watch?v=5FxwlTwsrdk&t=67s)
 
-1. Inside the VM, open Microsoft Edge, sign in to your course if needed, and open its osTicket installation lesson.
+1. Open Microsoft Edge on the Windows lab computer and navigate to your course's osTicket installation lesson.
 2. Download the lesson's `osTicket-Installation-Files` ZIP and locate it in **File Explorer → Downloads**.
 3. Right-click the ZIP and select **Extract All**.
 4. Choose the desktop as the destination, then select **Extract**.
@@ -116,9 +115,9 @@ Use your own VM, MySQL, and osTicket credentials when following this walkthrough
 
 *Installation video, approximately 03:24: CGI is enabled under IIS Application Development Features.*
 
-**Expected result:** The default IIS welcome page loads. This confirms the VM can serve a web page locally.
+**Expected result:** The default IIS welcome page loads. This confirms the Windows lab computer can serve a web page locally.
 
-`127.0.0.1` is the loopback address: in the VM's browser, it points to the VM itself. This is an HTTP web-server check, distinct from using `ping` to test ICMP responses.
+`127.0.0.1` is the loopback address: in the Windows lab computer's browser, it points to that same computer. This is an HTTP web-server check, distinct from using `ping` to test ICMP responses.
 
 ![The IIS welcome page at the loopback address](assets/02-iis-welcome.png)
 
@@ -129,10 +128,10 @@ Use your own VM, MySQL, and osTicket credentials when following this walkthrough
 **Video:** [03:56](https://www.youtube.com/watch?v=5FxwlTwsrdk&t=236s)
 
 1. Return to the extracted installation bundle.
-2. Open the **PHP Manager for IIS** installer, displayed as `PHPManagerForIIS_V1.5.0` in the recording.
-3. Accept the license agreement and complete the installation wizard.
+2. Open the **PHP Manager for IIS** installer, displayed as `PHPManagerForIIS_V1.5.0` in the recording, and select **Next**.
+3. On its license page, select **I Agree**, then select **Next** through the remaining wizard prompts to begin installation. When the installation completes, select **Close**.
 4. Open the **IIS URL Rewrite Module** installer, displayed as `rewrite_amd64_en-US`.
-5. Accept its agreement, install the module, and close the wizard.
+5. Select **I accept the terms in the License Agreement**, then select **Install**. Select **Finish** when the wizard reports completion.
 
 **Expected result:** IIS Manager includes **PHP Manager** and **URL Rewrite** features. If IIS Manager was already open, close and reopen it to refresh the feature list.
 
@@ -146,7 +145,7 @@ Use your own VM, MySQL, and osTicket credentials when following this walkthrough
 4. Set the extraction destination to `C:\PHP`, then select **Extract**.
 5. Open `C:\PHP` and confirm that `php-cgi.exe` is directly in that folder, rather than inside an extra nested folder.
 6. Return to the bundle and run `VC_redist.x86.exe`, which matches the PHP build used in the recording.
-7. Accept the agreement and complete the Visual C++ Redistributable installation.
+7. Select **I agree to the license terms and conditions**, select **Install**, and select **Close** when installation completes.
 
 **Expected result:** `C:\PHP\php-cgi.exe` exists and the required Visual C++ runtime is installed. The next IIS configuration step will use that exact executable path.
 
@@ -174,7 +173,7 @@ Use your own VM, MySQL, and osTicket credentials when following this walkthrough
 **Video:** [07:03](https://www.youtube.com/watch?v=5FxwlTwsrdk&t=423s)
 
 1. Open **Start**, search for **Internet Information Services (IIS) Manager**, and select **Run as administrator**.
-2. Select the VM/server node in the left **Connections** pane.
+2. Select the computer/server node in the left **Connections** pane.
 3. Double-click **PHP Manager** in the center pane.
 4. Select **Register new PHP version**.
 5. Browse to `C:\PHP\php-cgi.exe`, select it, and confirm with **OK**.
@@ -267,7 +266,7 @@ This temporary permission applies to this single configuration file. Complete st
 1. On the installer form, complete **System Settings**.
 2. Enter the **Helpdesk Name**, such as `Lavallais IT Help Desk` from the recording.
 3. Enter the **Default Email** for your lab help desk and select the primary language.
-4. Under **Admin User**, enter the administrator's first name, last name, and email address.
+4. Under **Admin User**, enter the administrator's first name, last name, and email address. Use an administrator email address different from the help desk's **Default Email** in step 3; the installer rejects identical addresses.
 5. Choose your osTicket administrator username and keep it available for the login step.
 6. Enter and confirm the osTicket administrator password. This account is separate from the MySQL root account.
 7. Leave the form open while creating the database in the next step.
@@ -279,7 +278,7 @@ This temporary permission applies to this single configuration file. Complete st
 **Video:** [13:27](https://www.youtube.com/watch?v=5FxwlTwsrdk&t=807s)
 
 1. Open the HeidiSQL installer from the bundle.
-2. Complete its installation wizard and launch HeidiSQL.
+2. Select **Next** through the default destination and component choices, then select **Install**. Keep **Launch HeidiSQL** selected on the completion screen and select **Finish**.
 3. In **Session manager**, select **New**.
 4. Use the local MySQL connection settings:
 
@@ -317,9 +316,9 @@ This temporary permission applies to this single configuration file. Complete st
    | MySQL Username | `root`, the default MySQL administrator account |
    | MySQL Password | The MySQL password you created in step 6 |
 
-   ![The osTicket installer database settings with database osTicket, hostname localhost, username root, and a masked password](assets/12-database-settings.png)
+   ![The osTicket installer Database Settings form during entry of the connection information](assets/12-database-settings.png)
 
-   *Installation video, approximately 14:48: the installer is configured to use the osTicket database; the password is masked.*
+   *Installation video, approximately 14:48: database connection information is being entered; the password is masked. Confirm that the complete database name is `osTicket`, matching the table above, before selecting Install Now.*
 
 3. Select **Install Now** and wait for the installation to finish.
 4. Confirm that the installer displays **Congratulations!** and reports that installation completed successfully.
@@ -369,7 +368,7 @@ This temporary permission applies to this single configuration file. Complete st
 
 ### 16. Verify the finished installation
 
-After cleanup, use the following checks inside the VM:
+After cleanup, use the following checks on the Windows lab computer:
 
 | Check | How to verify | Expected result |
 | --- | --- | --- |
@@ -380,7 +379,7 @@ After cleanup, use the following checks inside the VM:
 | Installer is removed | Inspect `C:\inetpub\wwwroot\osTicket` and refresh the Admin Panel | No setup folder or delete-setup warning |
 | Help desk is enabled | Check Admin Panel → Settings → System | Helpdesk Status is Online |
 
-**Evidence provided:** The video and installation screenshots document the process through installer success. Administrator login, cleanup, and the table above describe follow-up checks to perform after installation; they are not shown in this recording and do not represent a new test run against a live VM.
+**Evidence provided:** The video and installation screenshots document the process through installer success. Administrator login, cleanup, and the table above describe follow-up checks to perform after installation; they are not shown in this recording and do not represent a new test run against a live computer.
 
 ## Troubleshooting
 
@@ -393,12 +392,13 @@ After cleanup, use the following checks inside the VM:
 | OPcache remains red | The recording did not verify successful activation; treat it as an optional performance item for this lab |
 | Installer cannot write the configuration file | Verify the exact filename and temporary installer permissions in steps 10–11 |
 | Database connection fails | Confirm MySQL is running, the database name is `osTicket`, and the entered credentials match the MySQL account |
+| Administrator email conflicts with the system email | Enter different addresses for the help desk's Default Email and the administrator's email, then retry installation |
 | osTicket opens a 404 page | Confirm the application files are in `C:\inetpub\wwwroot\osTicket` and use the matching URL |
 | Admin Panel asks to delete setup | Complete the setup-directory cleanup in step 15 |
 
 ## Skills demonstrated
 
-- Accessing and administering an Azure-hosted Windows VM through Remote Desktop.
+- Performing an application installation on Windows 10 with administrator access, using Remote Desktop for the recorded lab.
 - Enabling IIS features and verifying local HTTP service.
 - Registering PHP through FastCGI and checking extension availability.
 - Installing a MySQL service and creating an application database with HeidiSQL.
@@ -418,4 +418,3 @@ The [osTicket post-installation configuration guide](https://github.com/KLavalla
 - [osTicket 1.15.8 post-installation guide](https://docs.osticket.com/en/v1.15.8/Getting%20Started/Post-Installation.html)
 
 All 12 installation screenshots are frames from my installation walkthrough, cropped to the relevant application windows. Arrows, circles, and the temporary-permission label highlight key settings. Captions identify the approximate video time and the state shown.
-
